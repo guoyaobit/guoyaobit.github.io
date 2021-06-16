@@ -170,7 +170,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-06-16 14:35:01 / Modified: 15:56:46" itemprop="dateCreated datePublished" datetime="2021-06-16T14:35:01+08:00">2021-06-16</time>
+              <time title="Created: 2021-06-16 14:35:01 / Modified: 16:11:40" itemprop="dateCreated datePublished" datetime="2021-06-16T14:35:01+08:00">2021-06-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -193,13 +193,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>每一个学习openstack 的新手 往往是通过devstack 入手的 ，经常会出现各问题，安装的时候报错，大部分情况还是 由于网络 gfw 的，导致下载失败，因此必须要先翻墙，学会科学上网，才能顺利安装。</p>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>每一个学习openstack 的新手 往往是通过devstack 入手的 ，经常会出现各问题，安装的时候报错，大部分情况还是 由于网络 gfw 的，导致下载失败，因此必须要先翻墙，学会科学上网，才能顺利安装。</p>
 <p>正常情况下大概需要30分钟就能装好</p>
 <p>[TOC]</p>
-<h2 id="2-配置科学上网"><a href="#2-配置科学上网" class="headerlink" title="2. 配置科学上网"></a>2. 配置科学上网</h2><h3 id="安装v2ray"><a href="#安装v2ray" class="headerlink" title="安装v2ray"></a>安装v2ray</h3><p>启用 v2ray 必须提前买好 vpn 科学上网，一般是自建VPS 或者 机场</p>
+<h1 id="配置科学上网"><a href="#配置科学上网" class="headerlink" title="配置科学上网"></a>配置科学上网</h1><h2 id="安装v2ray"><a href="#安装v2ray" class="headerlink" title="安装v2ray"></a>安装v2ray</h2><p>启用 v2ray 必须提前买好 vpn科学上网，一般是自建VPS 或者 机场</p>
 <p>自己使用的是 <a target="_blank" rel="noopener" href="https://justmysocks3.net/members/index.php">https://justmysocks3.net/members/index.php</a> 搬瓦工 的机场，目前还是比较稳定</p>
 <p>安装客户端参考：<a target="_blank" rel="noopener" href="https://github.com/v2fly/fhs-install-v2ray">https://github.com/v2fly/fhs-install-v2ray</a></p>
-<h4 id="一键安装脚本："><a href="#一键安装脚本：" class="headerlink" title="一键安装脚本："></a>一键安装脚本：</h4><p>执行：</p>
+<h3 id="一键安装脚本："><a href="#一键安装脚本：" class="headerlink" title="一键安装脚本："></a>一键安装脚本：</h3><p>执行：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)</span><br></pre></td></tr></table></figure>
 
 <p>执行:</p>
@@ -215,10 +215,10 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --socks5 127.0.0.1:10808 google.com</span><br></pre></td></tr></table></figure>
 
 <p>其中 10808是本地代理的端口号</p>
-<h4 id="静态安装"><a href="#静态安装" class="headerlink" title="静态安装"></a>静态安装</h4><p>由于 网络问题 ，可能GitHub 无法连接上因此只能静态方式安装</p>
+<h3 id="静态安装"><a href="#静态安装" class="headerlink" title="静态安装"></a>静态安装</h3><p>由于 网络问题 ，可能GitHub 无法连接上因此只能静态方式安装</p>
 <p> 参考链接：<a target="_blank" rel="noopener" href="https://umaint.github.io/2019/01/04/v2ray-ubuntu/">https://umaint.github.io/2019/01/04/v2ray-ubuntu/</a></p>
 <p>下载 V2ray ：链接<a target="_blank" rel="noopener" href="https://github.com/v2ray/v2ray-core/releases">https://github.com/v2ray/v2ray-core/releases</a></p>
-<h3 id="安装privoxy"><a href="#安装privoxy" class="headerlink" title="安装privoxy"></a>安装privoxy</h3><p>为了让软件使用代理，因此必须安装 privoxy</p>
+<h2 id="安装privoxy"><a href="#安装privoxy" class="headerlink" title="安装privoxy"></a>安装privoxy</h2><p>为了让软件使用代理，因此必须安装 privoxy</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install privoxy</span><br></pre></td></tr></table></figure>
 
 <p>打开配置文件：</p>
@@ -243,7 +243,7 @@
 <p> 验证：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl Google.com</span><br><span class="line">curl ip.gs</span><br></pre></td></tr></table></figure>
 
-<h3 id="安装proxychains-（可选）"><a href="#安装proxychains-（可选）" class="headerlink" title="安装proxychains （可选）"></a>安装proxychains （可选）</h3><p>更新源或者安装包时，也可能出现无法访问的情况，因此还可以使用proxychains +v2ray 执行某些命令</p>
+<h2 id="安装proxychains-（可选）"><a href="#安装proxychains-（可选）" class="headerlink" title="安装proxychains （可选）"></a>安装proxychains （可选）</h2><p>更新源或者安装包时，也可能出现无法访问的情况，因此还可以使用proxychains +v2ray 执行某些命令</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install -y proxychains</span><br></pre></td></tr></table></figure>
 
 <p>修改配置文件/etc/proxychains.conf最后一行</p>
@@ -251,16 +251,16 @@
 <p>使用proxychains方法, 在命令前加上proxychains, 如:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains apt update</span><br></pre></td></tr></table></figure>
 
-<h2 id="安装devstack"><a href="#安装devstack" class="headerlink" title="安装devstack"></a>安装devstack</h2><p>参考官方文档：</p>
+<h1 id="安装devstack"><a href="#安装devstack" class="headerlink" title="安装devstack"></a>安装devstack</h1><p>参考官方文档：</p>
 <p><a target="_blank" rel="noopener" href="https://docs.openstack.org/devstack/latest/">https://docs.openstack.org/devstack/latest/</a></p>
-<h3 id="2-1-创建stack-用户"><a href="#2-1-创建stack-用户" class="headerlink" title="2.1  创建stack 用户"></a>2.1  创建stack 用户</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo useradd -s /bin/bash -d /opt/stack -m stack</span><br><span class="line">echo &quot;stack ALL=(ALL) NOPASSWD: ALL&quot; | sudo tee /etc/sudoers.d/stack</span><br><span class="line">sudo su - stack</span><br><span class="line"> </span><br><span class="line">在~/.bashrc 添加 </span><br><span class="line"></span><br><span class="line">export https_proxy=http://127.0.0.1:8118</span><br><span class="line">export http_proxy=http://127.0.0.1:8118</span><br><span class="line">export no_proxy=&quot;127.0.0.1,localhost,本地IP&quot;</span><br><span class="line"> </span><br><span class="line">并重启</span><br></pre></td></tr></table></figure>
+<h2 id="创建stack-用户"><a href="#创建stack-用户" class="headerlink" title="创建stack 用户"></a>创建stack 用户</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo useradd -s /bin/bash -d /opt/stack -m stack</span><br><span class="line">echo &quot;stack ALL=(ALL) NOPASSWD: ALL&quot; | sudo tee /etc/sudoers.d/stack</span><br><span class="line">sudo su - stack</span><br><span class="line"> </span><br><span class="line">在~/.bashrc 添加 </span><br><span class="line"></span><br><span class="line">export https_proxy=http://127.0.0.1:8118</span><br><span class="line">export http_proxy=http://127.0.0.1:8118</span><br><span class="line">export no_proxy=&quot;127.0.0.1,localhost,本地IP&quot;</span><br><span class="line"> </span><br><span class="line">并重启</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="2-2-下载-devstack"><a href="#2-2-下载-devstack" class="headerlink" title="2.2  下载 devstack"></a>2.2  下载 devstack</h2><p>指定 ussuri 版本</p>
+<h2 id="下载-devstack"><a href="#下载-devstack" class="headerlink" title="下载 devstack"></a>下载 devstack</h2><p>指定 ussuri 版本</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://opendev.org/openstack/devstack -b stable/ussuri</span><br><span class="line"><span class="built_in">cd</span> devstack</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-3-创建local-conf"><a href="#2-3-创建local-conf" class="headerlink" title="2.3  创建local.conf"></a>2.3  创建local.conf</h2><p>创建local.conf</p>
+<h2 id="创建local-conf"><a href="#创建local-conf" class="headerlink" title="创建local.conf"></a>创建local.conf</h2><p>创建local.conf</p>
 <p>[[local|localrc]]<br>ADMIN_PASSWORD=secret<br>DATABASE_PASSWORD=$ADMIN_PASSWORD<br>RABBIT_PASSWORD=$ADMIN_PASSWORD<br>SERVICE_PASSWORD=$ADMIN_PASSWORD</p>
 <p>安装： </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./stack.sh</span><br></pre></td></tr></table></figure>
