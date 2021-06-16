@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Openstack 安装 devstack</title>
-    <url>/2021/06/16/devstack%E5%AE%89%E8%A3%85/</url>
+    <title>总述篇</title>
+    <url>/2021/06/16/%E6%80%BB%E8%BF%B0%E7%AF%87/</url>
+    <content><![CDATA[<p>Openstack 作为一个软件工具，对大多人而言 只是类似VMware，不过是下载，安装，使用而已。</p>
+<p>因此我把这些过程以blog的形式记录了下来，基于openstack 的开源精神分享出去，希望大家少走点弯路，多花点时间在思考上。 </p>
+]]></content>
+  </entry>
+  <entry>
+    <title>安装篇- 安装devstack</title>
+    <url>/2021/06/16/%E5%AE%89%E8%A3%85%E7%AF%87-%20%E5%AE%89%E8%A3%85devstack/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>每一个学习openstack 的新手往往是通过devstack 入手部署测试开发环境。新手的第一次安装部署 通常需要1到2周时间通过部署熟悉环境。安装的时候报错，大部分情况还是 由于网络 gfw 的，导致下载失败，因此必须要先翻墙，学会科学上网，才能顺利安装。</p>
 <p>正常情况下大概需要30分钟就能装好。</p>
-<h1 id="配置科学上网"><a href="#配置科学上网" class="headerlink" title="配置科学上网"></a>配置科学上网</h1><h2 id="安装v2ray"><a href="#安装v2ray" class="headerlink" title="安装v2ray"></a>安装v2ray</h2><p>启用 v2ray 必须提前买好 vpn科学上网，一般是自建VPS 或者 机场</p>
+<h1 id="配置科学上网"><a href="#配置科学上网" class="headerlink" title="配置科学上网"></a>配置科学上网</h1><p>科学上网能够解决绝大部分运维部署问题。</p>
+<h2 id="安装v2ray"><a href="#安装v2ray" class="headerlink" title="安装v2ray"></a>安装v2ray</h2><p>启用 v2ray 必须提前买好 vpn科学上网，一般是自建VPS 或者 机场</p>
 <p>自己使用的是 <a href="https://justmysocks3.net/members/index.php">https://justmysocks3.net/members/index.php</a> 搬瓦工 的机场，目前还是比较稳定</p>
 <p>安装客户端参考：<a href="https://github.com/v2fly/fhs-install-v2ray">https://github.com/v2fly/fhs-install-v2ray</a></p>
 <h3 id="一键安装脚本："><a href="#一键安装脚本：" class="headerlink" title="一键安装脚本："></a>一键安装脚本：</h3><p>执行：</p>
@@ -24,7 +32,7 @@
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">curl --socks5 127.0.0.1:10808 google.com</span><br></pre></td></tr></table></figure>
 
 <p>其中 10808是本地代理的端口号</p>
-<h3 id="静态安装"><a href="#静态安装" class="headerlink" title="静态安装"></a>静态安装</h3><p>由于 网络问题 ，可能GitHub 无法连接上因此只能静态方式安装</p>
+<h3 id="静态安装"><a href="#静态安装" class="headerlink" title="静态安装"></a>静态安装</h3><p>有时候由于网络问题 ，可能GitHub 无法连接上因此只能静态方式安装</p>
 <p> 参考链接：<a href="https://umaint.github.io/2019/01/04/v2ray-ubuntu/">https://umaint.github.io/2019/01/04/v2ray-ubuntu/</a></p>
 <p>下载 V2ray ：链接<a href="https://github.com/v2ray/v2ray-core/releases">https://github.com/v2ray/v2ray-core/releases</a></p>
 <h2 id="安装privoxy"><a href="#安装privoxy" class="headerlink" title="安装privoxy"></a>安装privoxy</h2><p>为了让软件使用代理，因此必须安装 privoxy</p>
@@ -87,8 +95,8 @@
       </tags>
   </entry>
   <entry>
-    <title>openstack GPU虚拟机</title>
-    <url>/2021/06/16/openstack-GPU-%E8%99%9A%E6%8B%9F%E6%9C%BA/</url>
+    <title>配置篇 GPU虚拟机</title>
+    <url>/2021/06/16/%E9%85%8D%E7%BD%AE%E7%AF%87%20GPU%E8%99%9A%E6%8B%9F%E6%9C%BA/</url>
     <content><![CDATA[<h1 id="在宿主机中做虚拟化"><a href="#在宿主机中做虚拟化" class="headerlink" title="在宿主机中做虚拟化"></a>在宿主机中做虚拟化</h1><p>开启CPU虚拟化支持  VT-D 和IOMMU 在系统bios中查看VT-D是否打开</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">dmesg | grep -e DMAR -e IOMMU </span><br></pre></td></tr></table></figure>
 
@@ -143,12 +151,5 @@
         <tag>openstack</tag>
         <tag>gpu</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>总述</title>
-    <url>/2021/06/16/%E6%80%BB%E8%BF%B0/</url>
-    <content><![CDATA[<p>Openstack 作为一个软件工具，对大多人而言 只是类似VMware，不过是下载，安装，使用而已。</p>
-<p>因此我把这些过程以blog的形式记录了下来，基于openstack 的开源精神分享出去，希望大家少走点弯路，多花点时间在思考上。 </p>
-]]></content>
   </entry>
 </search>
