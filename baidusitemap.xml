@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://guoyaobit.github.io/2021/06/16/%E6%9E%B6%E6%9E%84%E7%AF%87-openstack-ansible/</loc>
+    <lastmod>2021-06-23</lastmod>
+  </url>
+  <url>
     <loc>https://guoyaobit.github.io/2021/06/16/%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3-neutron/</loc>
     <lastmod>2021-06-16</lastmod>
   </url>
