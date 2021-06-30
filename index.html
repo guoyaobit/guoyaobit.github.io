@@ -586,7 +586,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/06/16/%E6%9E%B6%E6%9E%84%E7%AF%87-openstack-ansible/" class="post-title-link" itemprop="url">架构篇 openstack-ansible</a>
+            <a href="/2021/06/16/%E6%9E%B6%E6%9E%84%E7%AF%87-openstack-ansible/" class="post-title-link" itemprop="url">openstack-ansible 部署</a>
         </h2>
 
         <div class="post-meta">
@@ -603,7 +603,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-23 17:18:58" itemprop="dateModified" datetime="2021-06-23T17:18:58+08:00">2021-06-23</time>
+                <time title="修改时间：2021-06-30 18:02:22" itemprop="dateModified" datetime="2021-06-30T18:02:22+08:00">2021-06-30</time>
               </span>
 
           
@@ -633,6 +633,45 @@
 <p>进行存储规划</p>
 <p>​    ceph 存储里对应的存储池 是否创建好了，权限是否设置正确，存储的副本数量设置</p>
 <p>​    使用lvm 卷 lvm 没有副本、冗余机制，所在的节点可能还是个计算节点或管理节点，在维护时会很麻烦。</p>
+</li>
+</ol>
+<h1 id="开始准备"><a href="#开始准备" class="headerlink" title="开始准备"></a>开始准备</h1><p>准备root免密登录</p>
+<p>从部署节点的root 账号免密登录到 集群其他节点 的root账户</p>
+<p>具体实现：</p>
+<ol>
+<li>给每个节点的root账户设置密码</li>
+<li>修改每个节点ssh配置：可通过密码登录，可通过root账户登录</li>
+<li>在部署节点上生成密钥对，ssh-copy-id 到集群节点</li>
+<li>查看后端存储系统 ceph的状态，准备好存储池及密钥对</li>
+</ol>
+<h1 id="开始部署"><a href="#开始部署" class="headerlink" title="开始部署"></a>开始部署</h1><p>参考 <a target="_blank" rel="noopener" href="https://docs.openstack.org/openstack-ansible/latest/">https://docs.openstack.org/openstack-ansible/latest/</a></p>
+<ol>
+<li><p>准备部署节点</p>
+<p>下载 openstack_ansible  <strong>注意选择版本</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> -b master https://github.com/openstack/openstack-ansible.git /opt/openstack-ansible</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>Change to the <code>/opt/openstack-ansible</code> directory, and run the Ansible bootstrap script:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> scripts/bootstrap-ansible.sh</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>准备 目标节点</p>
+<ol>
+<li><p>安装系统</p>
+<p>推荐：ubuntu 18.04 </p>
+</li>
+<li><p>配置免密登录</p>
+</li>
+<li><p>配置存储</p>
+<p>​        检查后端存储 是否可用</p>
+</li>
+<li><p>配置网络</p>
+<p>服务器上的网桥解读：（为什么要配这么多网桥，我想主要作用应该解决不同服务器上网卡名称不同的问题把。）</p>
+<p>br-mgmt ：管理网络，所有节点的openstack组件RESTful API 都通过这个网桥进行通信，因此这个网络必不可少</p>
+<p>br-vxlan ： vxlan网络，br-vxlan 接口上需要配置ip地址，vxlan网络才能使用，同时需要打开l2population 或者打开交换机的vxlan 多播模式</p>
+<p>br-vlan:    vlan 网络  ，假如br-vlan所在交换机 有个vlan29 可以提供用户使用。因此可以在horizon界面上创建vlan29 及虚拟机，这个虚拟机所在物理机上就会出现br-vlan.29。</p>
+<p>br-storage: 存储网络，集群里的存储服务器和其他机器通信用的就是这个网络，具体来讲cinder-volume 服务器和 ceph的 mon节点 通过这个网络连接到了一起</p>
+</li>
+</ol>
 </li>
 </ol>
 
@@ -845,7 +884,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
