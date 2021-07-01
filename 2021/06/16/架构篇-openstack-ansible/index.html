@@ -28,7 +28,7 @@
 <meta property="og:description" content="前言openstack 的架构应当按照用户需求进行定制化，所以我仅按照openstack-ansible 的官方网站的架构，提出了自己的理解。 集群部署中最为关键的是集群的网络架构，按照功能可以分为计算网络，存储网络以及管理网络。按照网络协议可以分为RDMA 网络 即 infiband ，ROCE 等，以太网网络及FC 光纤网络等。应当按照用户需求进行取舍。 部署之前参考官方链接：https:&#x2F;&#x2F;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-06-16T12:49:20.000Z">
-<meta property="article:modified_time" content="2021-06-30T10:03:09.428Z">
+<meta property="article:modified_time" content="2021-07-01T06:06:49.208Z">
 <meta property="article:author" content="guoyaobit">
 <meta property="article:tag" content="openstack">
 <meta name="twitter:card" content="summary">
@@ -209,7 +209,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-30 18:03:09" itemprop="dateModified" datetime="2021-06-30T18:03:09+08:00">2021-06-30</time>
+                <time title="修改时间：2021-07-01 14:06:49" itemprop="dateModified" datetime="2021-07-01T14:06:49+08:00">2021-07-01</time>
               </span>
 
           
@@ -266,6 +266,9 @@
 <p>推荐：ubuntu 18.04 </p>
 </li>
 <li><p>配置免密登录</p>
+<ol>
+<li>部署节点 的root 用户可以ssh 直接访问到集群的其他节点root用户</li>
+</ol>
 </li>
 <li><p>配置存储</p>
 <p>​        检查后端存储 是否可用</p>
@@ -276,8 +279,19 @@
 <p>br-vxlan ： vxlan网络，br-vxlan 接口上需要配置ip地址，vxlan网络才能使用，同时需要打开l2population 或者打开交换机的vxlan 多播模式</p>
 <p>br-vlan:    vlan 网络  ，假如br-vlan所在交换机 有个vlan29 可以提供用户使用。因此可以在horizon界面上创建vlan29 及虚拟机，这个虚拟机所在物理机上就会出现br-vlan.29。</p>
 <p>br-storage: 存储网络，集群里的存储服务器和其他机器通信用的就是这个网络，具体来讲cinder-volume 服务器和 ceph的 mon节点 通过这个网络连接到了一起</p>
+<p>lxcbr0： lxc 连接这个接口 安装完成后管理节点上所有的lxc容器里的eth0 都会连接 eth0</p>
 </li>
 </ol>
+</li>
+<li><p>开始部署</p>
+<p>一共是 两个配置文件 + 3行命令</p>
+<p>两个yaml文件：</p>
+<p>/etc/openstack_deploy/openstack_user_config.yml</p>
+<p>/etc/openstack_deploy/user_variables.yml</p>
+<p>三个命令：</p>
+<p>openstack-ansible setup-hosts.yml</p>
+<p>openstack-ansible setup-infrastructure.yml</p>
+<p>openstack-ansible setup-openstack.yml</p>
 </li>
 </ol>
 
