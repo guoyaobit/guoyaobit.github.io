@@ -173,6 +173,89 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://guoyaobit.github.io/2021/07/01/qt-%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E5%8F%91%E5%B8%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="guoyaobit">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/01/qt-%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E5%8F%91%E5%B8%83/" class="post-title-link" itemprop="url">qt 程序打包发布</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-07-01 14:49:53 / 修改时间：15:03:49" itemprop="dateCreated datePublished" datetime="2021-07-01T14:49:53+08:00">2021-07-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li> 参考链接<a target="_blank" rel="noopener" href="https://github.com/probonopd/linuxdeployqt/blob/master/BUILDING.md">https://github.com/probonopd/linuxdeployqt/blob/master/BUILDING.md</a></li>
+</ol>
+<p>   下载并且编译</p>
+   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y install git g++ libgl1-mesa-dev</span><br><span class="line">git clone https://github.com/probonopd/linuxdeployqt.git</span><br><span class="line"><span class="meta">#</span><span class="bash"> Then build <span class="keyword">in</span> Qt Creator, or use 配置qt 环境变量</span> </span><br><span class="line">export PATH=$(readlink -f /tmp/.mount_QtCreator-*-x86_64/*/gcc_64/bin/):$PATH</span><br><span class="line">cd linuxdeployqt</span><br><span class="line">qmake</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>（可选） ubuntu20.04 需要修改源码后再编译</p>
+<p>找到tools/linuxdeployqt/main.cpp, 注释如下代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// openSUSE Leap 15.0 uses glibc 2.26 and is used on OBS</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">strverscmp</span> (glcv, <span class="string">&quot;2.27&quot;</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">	<span class="built_in">qInfo</span>() &lt;&lt; <span class="string">&quot;ERROR: The host system is too new.&quot;</span>;</span><br><span class="line">	<span class="built_in">qInfo</span>() &lt;&lt; <span class="string">&quot;Please run on a system with a glibc version no newer than what comes with the oldest&quot;</span>;</span><br><span class="line">	<span class="built_in">qInfo</span>() &lt;&lt; <span class="string">&quot;currently still-supported mainstream distribution (xenial), which is glibc 2.23.&quot;</span>;</span><br><span class="line">	<span class="built_in">qInfo</span>() &lt;&lt; <span class="string">&quot;This is so that the resulting bundle will work on most still-supported Linux distributions.&quot;</span>;</span><br><span class="line">	<span class="built_in">qInfo</span>() &lt;&lt; <span class="string">&quot;For more information, please see&quot;</span>;</span><br><span class="line">	<span class="built_in">qInfo</span>() &lt;&lt; <span class="string">&quot;https://github.com/probonopd/linuxdeployqt/issues/340&quot;</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>可选 安装 </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make install</span><br></pre></td></tr></table></figure></li>
+<li><p>安装 <a target="_blank" rel="noopener" href="https://nixos.org/patchelf.html">patchelf</a> </p>
+<p>可通过apt 安装 sudo apt install patch </p>
+</li>
+<li><p>安装 appimagetool</p>
+</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo wget -c <span class="string">&quot;https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage&quot;</span> -O /usr/<span class="built_in">local</span>/bin/appimagetool</span><br><span class="line">sudo chmod a+x /usr/<span class="built_in">local</span>/bin/appimagetool</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li><p>使用 qt 生成release 可执行文件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linuxdeployqt 可执行文件名 -appimage</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>执行./AppRun 即可跑程序了</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://guoyaobit.github.io/2021/06/16/%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3-neutron/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -760,66 +843,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://guoyaobit.github.io/2021/06/16/%E6%80%BB%E8%BF%B0%E7%AF%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="guoyaobit">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/16/%E6%80%BB%E8%BF%B0%E7%AF%87/" class="post-title-link" itemprop="url">总述篇</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-06-16 17:40:44 / 修改时间：20:39:14" itemprop="dateCreated datePublished" datetime="2021-06-16T17:40:44+08:00">2021-06-16</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Openstack 作为一个软件工具，对大多人而言 只是类似VMware，不过是下载，安装，使用而已。</p>
-<p>因此我把这些过程以blog的形式记录了下来，基于openstack 的开源精神分享出去，希望大家少走点弯路，多花点时间在思考上。 </p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -889,7 +912,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -898,7 +921,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
