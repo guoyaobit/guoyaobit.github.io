@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://guoyaobit.github.io/2021/06/16/%E9%83%A8%E7%BD%B2%E7%AF%87-openstack-ansible/</loc>
+    
+    <lastmod>2021-07-01</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://guoyaobit.github.io/2021/07/01/qt-%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E5%8F%91%E5%B8%83/</loc>
     
     <lastmod>2021-07-01</lastmod>
@@ -79,13 +86,6 @@
   </url>
   
   <url>
-    <loc>https://guoyaobit.github.io/2021/06/16/%E9%83%A8%E7%BD%B2%E7%AF%87-openstack-ansible/</loc>
-    
-    <lastmod>2021-06-16</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://guoyaobit.github.io/2021/06/16/%E6%80%BB%E8%BF%B0%E7%AF%87/</loc>
     
     <lastmod>2021-06-16</lastmod>
@@ -109,6 +109,13 @@
 
   
   <url>
+    <loc>https://guoyaobit.github.io/tags/qt-C/</loc>
+    <lastmod>2021-07-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://guoyaobit.github.io/tags/devstack/</loc>
     <lastmod>2021-07-01</lastmod>
     <changefreq>daily</changefreq>
@@ -130,7 +137,7 @@
   </url>
   
   <url>
-    <loc>https://guoyaobit.github.io/tags/qt-C/</loc>
+    <loc>https://guoyaobit.github.io/tags/ansible-openstack/</loc>
     <lastmod>2021-07-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
