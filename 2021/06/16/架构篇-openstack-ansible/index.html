@@ -17,13 +17,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"guoyaobit.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="前言openstack 的架构应当按照用户需求进行定制化，所以我仅按照openstack-ansible 的官方网站的架构，提出了自己的理解。 集群部署中最为关键的是集群的网络架构，按照功能可以分为计算网络，存储网络以及管理网络。按照网络协议可以分为RDMA 网络 即 infiband ，ROCE 等，以太网网络及FC 光纤网络等。应当按照用户需求进行取舍。 部署之前参考官方链接：https:&#x2F;&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="openstack-ansible 部署">
-<meta property="og:url" content="https://guoyaobit.github.io/2021/06/16/%E6%9E%B6%E6%9E%84%E7%AF%87-openstack-ansible/index.html">
+<meta property="og:url" content="http://example.com/2021/06/16/%E6%9E%B6%E6%9E%84%E7%AF%87-openstack-ansible/index.html">
 <meta property="og:site_name" content="博客">
 <meta property="og:description" content="前言openstack 的架构应当按照用户需求进行定制化，所以我仅按照openstack-ansible 的官方网站的架构，提出了自己的理解。 集群部署中最为关键的是集群的网络架构，按照功能可以分为计算网络，存储网络以及管理网络。按照网络协议可以分为RDMA 网络 即 infiband ，ROCE 等，以太网网络及FC 光纤网络等。应当按照用户需求进行取舍。 部署之前参考官方链接：https:&#x2F;&#x2F;">
 <meta property="og:locale" content="zh_CN">
@@ -33,7 +33,7 @@
 <meta property="article:tag" content="openstack">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://guoyaobit.github.io/2021/06/16/%E6%9E%B6%E6%9E%84%E7%AF%87-openstack-ansible/">
+<link rel="canonical" href="http://example.com/2021/06/16/%E6%9E%B6%E6%9E%84%E7%AF%87-openstack-ansible/">
 
 
 <script id="page-configurations">
@@ -184,7 +184,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://guoyaobit.github.io/2021/06/16/%E6%9E%B6%E6%9E%84%E7%AF%87-openstack-ansible/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/16/%E6%9E%B6%E6%9E%84%E7%AF%87-openstack-ansible/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
